@@ -47,7 +47,7 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
   const GPTdata = await res.json();
   let { content } = GPTdata;
   if ((content && content.error) || content === undefined) {
-    content = `Sorry, I'm having trouble getting the weather summary. Please try again later.`;
+    content = `Sorry, I'm having trouble getting the weather summary. Please try again later for AIvern summary when AIvern has more MONEY.`;
   }
   return (
     <div className="flex flex-col min-h-screen md:flex-row">
