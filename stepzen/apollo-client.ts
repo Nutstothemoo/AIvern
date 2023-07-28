@@ -1,4 +1,5 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { Console } from "console";
 
 export const getClient = () => {
   const client = new ApolloClient({
@@ -8,5 +9,6 @@ export const getClient = () => {
       Authorization: `apikey ${process.env.NEXT_PUBLIC_STEPZEN_API_KEY}`,
     },
   });
+
   return client;
 };

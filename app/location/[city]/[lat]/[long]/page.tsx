@@ -9,7 +9,7 @@ import fetchWeatherQuery from "@/graphql/queries/fetchWeatherQueries";
 import cleanData from "@/lib/cleanData";
 import getBasePath from "@/lib/getBasePath";
 
-export const revalidate = 60;
+export const revalidate = 1400;
 
 type Props = {
   params: {
@@ -21,7 +21,6 @@ type Props = {
 
 async function WeatherPage({ params: { city, lat, long } }: Props) {
   const client = getClient();
-
   const { data } = await client.query({
     query: fetchWeatherQuery,
     variables: {
@@ -45,10 +44,11 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
       weatherData: dataToSend,
     }),
   });
-
   const GPTdata = await res.json();
-  const { content } = GPTdata;
-
+  let { content } = GPTdata;
+  if ((content && content.error) || content === undefined) {
+    content = `Sorry, I'm having trouble getting the weather summary. Please try again later.`;
+  }
   return (
     <div className="flex flex-col min-h-screen md:flex-row">
       <InformationPanel city={city} long={long} lat={lat} results={results} />

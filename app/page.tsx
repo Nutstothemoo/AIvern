@@ -2,19 +2,28 @@
 
 import CityPicker from "@/components/CityPicker";
 import { Card, Divider, Subtitle, Text } from "@tremor/react";
+import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#394F68] to-[#183B7E] p-10 flex flex-col justify-center items-center">
+    <div className="min-h-screen bg-gradient-to-br from-[#369756] to-[#08611d] p-10 flex flex-col justify-center items-center">
       <Card className="max-w-4xl mx-auto">
-        <Text className="text-6xl font-bold text-center mb-10">Weather AI</Text>
+      <Image
+          src="/ivern.jpg"
+          alt="Picture of AIvern"
+          width={200}
+          height={200}
+          className="rounded-full mx-auto"
+        />
+        <Text className="text-6xl font-bold text-center my-10"> AIvern</Text>
         <Subtitle className="text-xl text-center">
-          Powered by OpenAI, Next.js 13.3, Tailwind CSS, Tremor 2.0 + More!
+          {" "}
+          Hoho, I'm AIvern, the Green Father. I'm here to help you  Tell me where you live !
         </Subtitle>
 
         <Divider className="my-10" />
 
-        <Card className="bg-gradient-to-br from-[#394F68] to-[#183B7E]">
+        <Card className="bg-gradient-to-br from-[#396851] to-[#187e42]">
           <CityPicker />
         </Card>
       </Card>
