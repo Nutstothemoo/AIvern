@@ -18,7 +18,7 @@ export default function Home() {
         <Text className="text-6xl font-bold text-center my-10"> AIvern</Text>
         <Subtitle className="text-xl text-center">
           {" "}
-          Hoho, I'm AIvern, the Green Father. I'm here to help you Tell me where
+          Hoho, I &apos;m AIvern, the Green Father. I&apos; m here to help you Tell me where
           you live !
         </Subtitle>
 
