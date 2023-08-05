@@ -20,7 +20,6 @@ type Props = {
 };
 
 async function WeatherPage({ params: { city, lat, long } }: Props) {
-  
   const client = getClient();
 
   const { data } = await client.query({
@@ -35,22 +34,23 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
 
   const results: Root = data.myQuery;
 
-  const dataToSend = cleanData(results, city);
-  console.log(`${getBasePath()}/api/getWeatherSummary`)
-  const res = await fetch(`${getBasePath()}/api/getWeatherSummary`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      weatherData: dataToSend,
-    }),
-  });
-  const GPTdata = await res.json();
-  let { content } = GPTdata;
-  if ((content && content.error) || content === undefined) {
-    content = `Sorry, I'm having trouble getting the weather summary. Please try again later for AIvern summary when AIvern has more MONEY.`;
-  }
+  // const dataToSend = cleanData(results, city);
+  // console.log(`${getBasePath()}/api/getWeatherSummary`)
+  // const res = await fetch(`${getBasePath()}/api/getWeatherSummary`, {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify({
+  //     weatherData: dataToSend,
+  //   }),
+  // });
+  // const GPTdata = await res.json();
+  // let { content } = GPTdata;
+  let content = `Sorry, I'm having trouble getting the weather summary. Please try again later for AIvern summary when AIvern has more MONEY for vercel Payement Plan.`;
+  // if ((content && content.error) || content === undefined) {
+  //   content = `Sorry, I'm having trouble getting the weather summary. Please try again later for AIvern summary when AIvern has more MONEY.`;
+  // }
   return (
     <div className="flex flex-col min-h-screen md:flex-row">
       <InformationPanel city={city} long={long} lat={lat} results={results} />
