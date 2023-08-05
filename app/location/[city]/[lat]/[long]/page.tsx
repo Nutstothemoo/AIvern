@@ -9,7 +9,7 @@ import fetchWeatherQuery from "@/graphql/queries/fetchWeatherQueries";
 import cleanData from "@/lib/cleanData";
 import getBasePath from "@/lib/getBasePath";
 
-export const revalidate = 1400;
+export const revalidate = 60;
 
 type Props = {
   params: {
@@ -20,7 +20,9 @@ type Props = {
 };
 
 async function WeatherPage({ params: { city, lat, long } }: Props) {
+  
   const client = getClient();
+
   const { data } = await client.query({
     query: fetchWeatherQuery,
     variables: {
@@ -30,11 +32,10 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
       timezone: "GMT",
     },
   });
-
   const results: Root = data.myQuery;
 
   const dataToSend = cleanData(results, city);
-
+  console.log(`${getBasePath()}/api/getWeatherSummary`)
   const res = await fetch(`${getBasePath()}/api/getWeatherSummary`, {
     method: "POST",
     headers: {
