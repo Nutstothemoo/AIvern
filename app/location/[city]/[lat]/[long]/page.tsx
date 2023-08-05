@@ -32,6 +32,7 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
       timezone: "GMT",
     },
   });
+
   const results: Root = data.myQuery;
 
   const dataToSend = cleanData(results, city);
